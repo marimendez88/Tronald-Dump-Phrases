@@ -1,0 +1,7 @@
+{
+  "name": "tronald-dump-phrases",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
