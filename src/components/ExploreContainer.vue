@@ -1,18 +1,63 @@
 <template>
   <div id="container">
-    <strong>{{ name }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+     <img src="@/assets/img/fcktrump.png" class="square">
+     <ion-searchbar animated 
+     show-cancel-button="focus"
+     placeholder="Trust me, He said it" 
+     v-model="textWrote"
+     @ionChange="searchByTerm()"
+     >
+     </ion-searchbar>
+     <ion-label v-if="totalResults !== 0">
+       <p>
+         We have 
+        {{totalResults}} quotes 
+         about {{textWrote}}</p>
+        </ion-label>
+      <section v-if="!totalResults">
+        <ion-button @click="searchByTerm()">Show me a random Meme</ion-button>
+      </section>
+      <section v-if="quotes">
+        <ion-card v-for="singleQuote in quotes" :key="singleQuote">
+          <ion-card-header>
+              <ion-card-title>Donald Trump Said:</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p class="cite">"{{singleQuote.quoteText}}"</p>  
+              <hr>
+            <p>Source <a :href="singleQuote.sourceUrl" target="_blank">here</a> </p>
+         
+          </ion-card-content>
+      </ion-card>
+      </section>
+        <hr>
   </div>
 </template>
 
 <script lang="ts">
+import { IonSearchbar, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent } from '@ionic/vue';
+import { toRefs, reactive, computed } from 'vue';
+import {useQuotesSpace} from '@/hooks/quotes-space'
 
-export default {
+
+export default  ({
   name: 'ExploreContainer',
   props: {
-    name: String
+  },
+  components: {
+    IonSearchbar 
+  },
+  setup(){
+    return useQuotesSpace();
   }
-}
+});
+    
+  
+    
+
+
+
+
 </script>
 
 <style scoped>
@@ -21,8 +66,9 @@ export default {
   position: absolute;
   left: 0;
   right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 15%;
+  padding: 2%;
+  margin-bottom: 10%;
 }
 
 #container strong {
@@ -40,4 +86,12 @@ export default {
 #container a {
   text-decoration: none;
 }
+
+.square {
+    width: 30%;
+}
+.cite{
+  font-style: italic;
+}
+
 </style>
