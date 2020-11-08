@@ -14,9 +14,9 @@
         {{totalResults}} quotes 
          about {{textWrote}}</p>
         </ion-label>
-      <section v-if="!totalResults">
+      <!-- <section v-if="!totalResults">
         <ion-button @click="searchByTerm()">Show me a random Meme</ion-button>
-      </section>
+      </section> -->
       <section v-if="quotes">
         <ion-card v-for="singleQuote in quotes" :key="singleQuote">
           <ion-card-header>
@@ -26,7 +26,9 @@
             <p class="cite">"{{singleQuote.quoteText}}"</p>  
               <hr>
             <p>Source <a :href="singleQuote.sourceUrl" target="_blank">here</a> </p>
-         
+            <section>
+              <p>Wanna Share?</p>
+            </section>
           </ion-card-content>
       </ion-card>
       </section>
@@ -52,11 +54,6 @@ export default  ({
   }
 });
     
-  
-    
-
-
-
 
 </script>
 
@@ -92,6 +89,9 @@ export default  ({
 }
 .cite{
   font-style: italic;
+}
+ion-card-title{
+  --color: var(--ion-color-tertiary)
 }
 
 </style>
