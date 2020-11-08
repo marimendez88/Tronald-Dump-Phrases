@@ -1,0 +1,19 @@
+ion-toolbar {
+    --background: var(--ion-color-primary);
+    --color: var(--ion-color-primary-contrast);
+}
+
+ion-title {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+p.p-center {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+ion-label {
+    text-align: center;
+    text-transform: capitalize;
+}
