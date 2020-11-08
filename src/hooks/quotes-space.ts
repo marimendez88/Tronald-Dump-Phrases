@@ -31,15 +31,15 @@ export function useQuotesSpace(){
     //   return apiClient.get('/random/meme')
     // };
 
-
     const shapeQuote = (quotesUnshaped: any[]): QuoteType[] => {
     let tempArray: QuoteType [] = [];
+    
     quotesUnshaped.forEach(quoteUnshaped => {
       tempArray = [...tempArray, 
         {
           quoteId: quoteUnshaped.quote_id,
           tags: quoteUnshaped.tags,
-          createdAt: quoteUnshaped.created_at,
+          createdAt: quoteUnshaped.created_at.slice(0,10),
           quoteText: quoteUnshaped.value,
           sourceUrl: quoteUnshaped._embedded.source[0].url
         }

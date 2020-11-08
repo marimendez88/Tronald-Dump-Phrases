@@ -24,11 +24,9 @@
           </ion-card-header>
           <ion-card-content>
             <p class="cite">"{{singleQuote.quoteText}}"</p>  
+            <p class="cite">Date: {{singleQuote.createdAt}}</p>  
               <hr>
             <p>Source <a :href="singleQuote.sourceUrl" target="_blank">here</a> </p>
-            <section>
-              <p>Wanna Share?</p>
-            </section>
           </ion-card-content>
       </ion-card>
       </section>
@@ -42,12 +40,13 @@ import { toRefs, reactive, computed } from 'vue';
 import {useQuotesSpace} from '@/hooks/quotes-space'
 
 
+
 export default  ({
   name: 'ExploreContainer',
   props: {
   },
   components: {
-    IonSearchbar 
+    IonSearchbar
   },
   setup(){
     return useQuotesSpace();

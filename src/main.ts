@@ -1,5 +1,4 @@
 import { createApp } from 'vue'
-import { createStore } from 'vuex'
 import App from './App.vue'
 import router from './router';
 
@@ -27,12 +26,11 @@ import './theme/global.css';
 
 
 
+
+
 const app = createApp(App)
   .use(IonicVue)
   .use(router);
-
-// const store = createStore({});
-
 
 router.isReady().then(() => {
   app.mount('#app');
